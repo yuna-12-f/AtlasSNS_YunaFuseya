@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
+
+//新規ユーザー情報を取得
+
 {
     /*
     |--------------------------------------------------------------------------
