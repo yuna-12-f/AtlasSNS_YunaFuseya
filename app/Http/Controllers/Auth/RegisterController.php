@@ -42,12 +42,22 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function register(Request $request){
-        if($request->isMethod('post')){
+    public function register(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            // $data = $request ->all();
+            // $validated=$request->validate([
+            //     'username' =>'required|min:2|max:40',
+            //     'mail' =>'required|string|email|min:5|max:40',
+            //     'password' =>'required|alpha_num|min:8|max:20|confirmed',
+            //     'password_confirmation' =>'required|alpha_num|min:8|max:20',
+            // ])
+
 
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
+
 
             User::create([
                 'username' => $username,
@@ -60,7 +70,8 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function added(){
+    public function added()
+    {
         return view('auth.added');
     }
 }
