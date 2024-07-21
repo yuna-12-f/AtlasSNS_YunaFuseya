@@ -1,10 +1,15 @@
 @extends('layouts.logout')
 
 @section('content')
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+
     <!-- 適切なURLを入力してください -->
     {!! Form::open(['url' => '/register']) !!}
 
     <h2>新規ユーザー登録</h2>
+
 
     {{ Form::label('ユーザー名') }}
     {{ Form::text('username', null, ['class' => 'input']) }}

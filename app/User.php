@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts()
+    {
+        //リレーション（ユーザーから見てポストに繋げたい。多数対1）
+        return $this->hasMany('App\Post');
+    }
 }

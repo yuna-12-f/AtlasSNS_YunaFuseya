@@ -45,27 +45,29 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         if ($request->isMethod('post')) {
-            // $data = $request ->all();
-            // $validated=$request->validate([
-            //     'username' =>'required|min:2|max:40',
-            //     'mail' =>'required|string|email|min:5|max:40',
-            //     'password' =>'required|alpha_num|min:8|max:20|confirmed',
-            //     'password_confirmation' =>'required|alpha_num|min:8|max:20',
-            // ])
+            $data = $request->all();
+            $validated = $request->validate([
+                'username' => 'required|min:2|max:40',
+                'mail' => 'required|string|email|min:5|max:40',
+                'password' => 'required|alpha_num|min:8|max:20|confirmed',
+                //'password_confirmation' => 'required|alpha_num|min:8|max:20',
+            ]);
 
-
+            //入力した値を取得する。
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
 
-
+            //返信後に「username」「mail」「password」のデータが収納される。
             User::create([
                 'username' => $username,
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
 
-            return redirect('added');
+            session()->put('username', $username);
+
+            return view('auth.added', compact('mail'));
         }
         return view('auth.register');
     }

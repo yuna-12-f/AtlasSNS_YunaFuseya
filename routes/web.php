@@ -29,17 +29,22 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
-//ログアウト機能
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::post('/logout', 'Auth\LoginController@logout');
+Route::group(['middleware' => 'auth'], function () {
 
-//ログイン中のページ
-Route::get('/top', 'PostsController@index');
-Route::post('/top', 'PostsController@index');
+    //ログアウト機能
+    Route::get('/logout', 'Auth\LoginController@logout');
+    Route::post('/logout', 'Auth\LoginController@logout');
 
-Route::get('/profile', 'UsersController@profile');
+    //ログイン中のページ
+    Route::get('/top', 'PostsController@index');
+    Route::post('/top', 'PostsController@index');
 
-Route::get('/search', 'UsersController@index');
+    Route::get('/profile', 'UsersController@profile');
 
-Route::get('/follow-list', 'PostsController@index');
-Route::get('/follower-list', 'PostsController@index');
+    Route::get('/search', 'UsersController@search');
+
+    Route::get('/follow-list', 'PostsController@index');
+    Route::get('/follower-list', 'PostsController@index');
+
+    Route::post('/newpostsend', 'PostsController@newPostCreate');
+});
