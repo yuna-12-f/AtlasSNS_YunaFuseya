@@ -18,3 +18,12 @@
         </div>
     </div>
 @endsection
+
+<table class="table table-hover">
+    @foreach ($posts as $post)
+        <tr>
+            <td><a class="btn btn-danger" href="/post/{{ $post->id }}/delete"
+                    onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a></td>
+        </tr>
+    @endforeach
+</table>

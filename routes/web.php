@@ -47,4 +47,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/follower-list', 'PostsController@index');
 
     Route::post('/newpostsend', 'PostsController@newPostCreate');
+
+    Route::get('/post/{id}/delete', 'PostsController@delete');
 });

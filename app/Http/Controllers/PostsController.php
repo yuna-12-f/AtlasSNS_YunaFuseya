@@ -16,10 +16,20 @@ class PostsController extends Controller
 
     public function newPostCreate(Request $request)
     {
+        $request->validate([
+            'main' => 'required|unique:posts|min:1|max:150',
+        ]);
+
         $post = $request->input('main');
         $user_id = Auth::user()->id;
         // dd($request);
         Post::create(['post' => $post, 'user_id' => $user_id]);
         return back();
+    }
+
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+        return redirect('/top');
     }
 }
