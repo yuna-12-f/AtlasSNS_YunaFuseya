@@ -11,16 +11,17 @@ class PostsController extends Controller
     //
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::get();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     public function newPostCreate(Request $request)
     {
         $request->validate([
-            'main' => 'required|unique:posts|min:1|max:150',
+            'post' => 'required|unique:posts|min:1|max:150',
         ]);
 
-        $post = $request->input('main');
+        $post = $request->input('post');
         $user_id = Auth::user()->id;
         // dd($request);
         Post::create(['post' => $post, 'user_id' => $user_id]);
