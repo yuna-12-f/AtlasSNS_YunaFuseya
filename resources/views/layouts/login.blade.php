@@ -25,27 +25,28 @@
     <header>
         <div id = "head">
             <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="accordion" class="accordion-container">
-                <p>{{ Auth::user()->username }}さん<img src="{{ 'images/' . Auth::user()->images }}"></p>
+            <div class="accordion">
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <h3 class="accordion-title js-accordion-title">
+                            <p>{{ Auth::user()->username }}さん</p>
+                            <img src="{{ 'images/' . Auth::user()->images }}">
+                        </h3>
 
-
-                {{-- アコーディオンメニュー --}}
-
-
-                <div class="accordion-title ja-accordion-title">
+                        <div class="accordion-content">
+                            <ul class="menu">
+                                <li><a class="home" href="/top">ホーム</a></li>
+                                <li><a class="profile" href="/profile">プロフィール</a></li>
+                                <li><a class="logout" href="/logout">ログアウト</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <ul class="menu">
-                    <li><a class="home" href="/top">ホーム</a></li>
-                    <li><a class="profile" href="/profile">プロフィール</a></li>
-                    <li><a class="logout" href="/logout">ログアウト</a></li>
-                </ul>
             </div>
-            <figure class="icon">
-                <img src="{{ asset('images/' . Auth::user()->images) }}">
-            </figure>
-        </div>
         </div>
     </header>
+
+
     <div id="row">
         <div id="container">
             @yield('content')
@@ -69,8 +70,8 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/JavaScript.js"></script>
 </body>
 
 </html>
