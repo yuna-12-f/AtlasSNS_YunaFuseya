@@ -7,6 +7,13 @@
         <button type="submit" value="" class="btn-success"></button>
     </form>
 
+    @if (!empty($keyword))
+        <p class="return_empty">
+            <i class="fa fa-angle-double-left">検索ワード: {{ $keyword }}</i>
+            </a>
+        </p>
+    @endif
+
     <div class="container-list">
         <table class="table table-hover">
             @foreach ($users as $user)

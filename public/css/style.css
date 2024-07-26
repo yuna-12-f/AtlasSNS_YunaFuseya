@@ -47,3 +47,53 @@ header {
     background: url(../images/search.png) no-repeat;
     background-size: contain;
 }
+
+/* アコーディオンメニュー*/
+.accordion-container {
+    display: flex;
+    position: relative;
+    border-top: none;
+    outline: pointer;
+}
+
+.accordion-container .accordion-title {
+    display: block;
+    position: relative;
+    font-size: 1.25em;
+    font-weight: normal;
+    color: #fff;
+    cursor: pointer;
+    width: 50px;
+    height: 17px;
+    padding-left: 50px;
+}
+
+a.home {
+    color: #778899;
+    height: 80px;
+    padding: 20px 0px 0px;
+    margin: auto;
+    font-size: 20px;
+
+    display: block;
+}
+
+a.profile {
+    color: #778899;
+    height: 80px;
+    padding: 20px 0px 0px;
+    margin: auto;
+    font-size: 20px;
+
+    display: block;
+}
+
+a.logout {
+    color: #778899;
+    height: 80px;
+    padding: 20px 0px 0px;
+    margin: auto;
+    font-size: 20px;
+
+    display: block;
+}

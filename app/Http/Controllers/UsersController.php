@@ -26,7 +26,7 @@ class UsersController extends Controller
 
         $request->validate([
             'username' => 'required|string|min:2|max:12',
-            'mail' => 'required|email|min:5|max:40|unique:users,email',
+            'mail' => 'required|email|min:5|max:40|unique:users,mail',
             'password' => 'required|alpha-num|min:8|max:20',
             'password_confirmation' => 'required|alpha-num|min:8|max:20|same:password',
             'bio' => 'string|max:150',
@@ -38,14 +38,14 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
-        //$images = $request->input('images');
+        $images = $request->file('images');
 
         User::where('id', $id)->update([
             'username' => $username,
             'mail' => $mail,
             'password' => Hash::make($request->password), //ハッシュ化
             'bio' => $bio,
-            //'images' => $images
+            'images' => $images
         ]);
 
         return redirect('/top');
@@ -62,6 +62,6 @@ class UsersController extends Controller
             $users = User::all();
         }
         //3つ目の処理
-        return view('users.search', ['users' => $users]);
+        return view('users.search', compact('users', 'keyword'));
     }
 }

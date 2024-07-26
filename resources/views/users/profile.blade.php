@@ -1,9 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+
+
     <div class="container">
         <div class="update">
-            {!! Form::open(['url' => '/profile/update']) !!}
+            {!! Form::open(['url' => '/profile/update', 'enctype' => 'multipart/form-data']) !!}
             @csrf
             {{ Form::hidden('id', Auth::user()->id) }}
             <img class="update-icon" src="{{ 'images/' . Auth::user()->images }}">
@@ -14,7 +19,7 @@
                 </div>
                 <div class="update-block">
                     <label for="mail">メールアドレス</label>
-                    <input type="email" name="mail" value="{{ Auth::user()->mail }}">
+                    <input type="mail" name="mail" value="{{ Auth::user()->mail }}">
                 </div>
                 <div class="update-block">
                     <label for="pass">パスワード</label>

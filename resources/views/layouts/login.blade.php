@@ -25,16 +25,25 @@
     <header>
         <div id = "head">
             <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="">
+            <div id="accordion" class="accordion-container">
                 <p>{{ Auth::user()->username }}さん<img src="{{ 'images/' . Auth::user()->images }}"></p>
-                <div>
-                    <ul>
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/profile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
-                    </ul>
+
+
+                {{-- アコーディオンメニュー --}}
+
+
+                <div class="accordion-title ja-accordion-title">
                 </div>
+                <ul class="menu">
+                    <li><a class="home" href="/top">ホーム</a></li>
+                    <li><a class="profile" href="/profile">プロフィール</a></li>
+                    <li><a class="logout" href="/logout">ログアウト</a></li>
+                </ul>
             </div>
+            <figure class="icon">
+                <img src="{{ asset('images/' . Auth::user()->images) }}">
+            </figure>
+        </div>
         </div>
     </header>
     <div id="row">
