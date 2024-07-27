@@ -49,9 +49,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/follow-list', 'PostsController@index');
     Route::get('/follower-list', 'PostsController@index');
 
+    //新規投稿作成
     Route::post('/newpostsend', 'PostsController@newPostCreate');
 
+    //投稿の削除
     Route::get('/post/{id}/delete', 'PostsController@delete');
 
+    //投稿の編集
     Route::post('/post/update', 'PostsController@postUpdate');
+
+    //フォローする
+    Route::post('/follow', 'FollowsController@follow');
+
+    //フォロー解除する
+    Route::post('/unfollow', 'FollowsController@unfollow');
 });

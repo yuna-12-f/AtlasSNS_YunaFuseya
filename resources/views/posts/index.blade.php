@@ -27,11 +27,14 @@
                 <td>{{ $post->user->username }}</td>
                 <td>{{ $post->post }}</td>
                 <td>{{ $post->created_at }}</td>
-                <td><button class="modal__trigger" href="" post="{{ $post->post }}"
-                        post_id="{{ $post->id }}"><img src="./images/edit.png" alt="編集"></button></td>
-                <td><a class="btn btn-danger" href="/post/{{ $post->id }}/delete"
-                        onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="./images/trash.png" alt="削除"></a>
-                </td>
+                @if (Auth::check() && Auth::user()->id === $post->user_id)
+                    <td><button class="modal__trigger" href="" post="{{ $post->post }}"
+                            post_id="{{ $post->id }}"><img src="./images/edit.png" alt="編集"></button></td>
+                    <td><a class="btn btn-danger" href="/post/{{ $post->id }}/delete"
+                            onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="./images/trash.png"
+                                alt="削除"></a>
+                    </td>
+                @endif
             </tr>
         @endforeach
     </table>
@@ -56,7 +59,7 @@
                         <div class="modal__content">
                             {{-- <p class="modal__title">モーダル１</p> --}}
                             <form action="/post/update" method="POST">
-                                <textarea name="upPost" class="modal_post">こんにちは</textarea>
+                                <textarea name="upPost" class="modal_post"></textarea>
                                 <input type="hidden" name="id" class="modal_id">
                                 {{-- <input type="submit" value="更新"><img src="./images/edit.png" alt="編集"> --}}
                                 <input type="image" class="submit" src="./images/edit.png" alt="更新">

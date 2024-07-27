@@ -26,4 +26,16 @@
             @endforeach
         </table>
     </div>
+
+    <!-- フォローボタン -->
+    <form action="/follow" method="POST">
+        @csrf
+        <button type="submit">フォローする</button>
+    </form>
+
+    <!-- フォロー解除ボタン -->
+    <form action="/unfollow" method="POST">
+        @csrf
+        <button type="submit">フォロー解除する</button>
+    </form>
 @endsection
