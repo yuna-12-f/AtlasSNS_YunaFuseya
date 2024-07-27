@@ -5,7 +5,7 @@ html {}
 body {}
 
 /* header */
-#head {
+header {
     background: #186AC9;
 }
 
@@ -67,14 +67,20 @@ body {}
 
 .accordion-content {
     display: none;
-    padding: 10px 20px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 10;
+    /* padding: 10px 20px; */
+    background-color: #fffffb;
+
 }
 
-.accordion-content::after {
+/* .accordion-content::after {
     display: flex;
     margin-left: auto;
     margin-right: 0;
-}
+} */
 
 .accordion-content p {
     font-size: 13px;
@@ -83,9 +89,9 @@ body {}
 
 /* コンテンツボックスの枠線 */
 .accordion-item:nth-of-type(1) .accordion-content {
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border-bottom: 2px solid #333;
+    border-left: 2px solid #333;
+    border-right: 2px solid #333;
 }
 
 /* 矢印 */
@@ -116,11 +122,137 @@ body {}
     width: 8px;
 }
 
+
+
 .accordion-title.open::after {
     top: 45%;
     transform: rotate(-45deg);
 }
 
-div#head {
+#head {
     display: flex;
+    position: relative;
+}
+
+/* .menu {
+    height: 500px;
+    width: 500px;
+} */
+
+.home {
+    display: inline-block;
+    height: 50px;
+    width: 250px;
+    border: 1px solid #333;
+    text-align: center;
+    padding-top: 15%;
+    font-size: 20px;
+    color: #727272;
+}
+
+.home:hover {
+    background-color: #000080;
+    color: #fffffb;
+    opacity: 0.8;
+}
+
+
+/* モーダル  */
+.modal {
+    padding: 200px 0;
+}
+
+.inner {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* モーダルを開くボタン */
+.modal__trigger {
+    cursor: pointer;
+    background: none;
+    border-style: none;
+}
+
+.modal__trigger:nth-child(n + 2) {
+    margin-top: 60px;
+}
+
+/* モーダル本体 */
+.modal__wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+.modal__layer {
+    height: 100%;
+    background: rgba(50, 50, 50, .85);
+    cursor: pointer;
+}
+
+.modal__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(calc(100% - 40px), 1000px);
+    height: calc(100% - 40px);
+    padding: 20px;
+    background: #fff;
+}
+
+.modal__inner {
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    padding: 80px 20px 20px;
+}
+
+/* モーダルを閉じるボタン */
+.modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(50, 50, 50, 1);
+    cursor: pointer;
+    transition: opacity .6s;
+}
+
+.modal__close:hover {
+    opacity: .6;
+}
+
+.modal__close:before,
+.modal__close:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    content: '';
+}
+
+.modal__close:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.modal__close:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* モーダル内のコンテンツ */
+.modal__content {}
+
+.modal__text {
+    margin-top: 30px;
+    line-height: 2.875;
 }

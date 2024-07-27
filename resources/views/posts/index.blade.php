@@ -27,8 +27,8 @@
                 <td>{{ $post->user->username }}</td>
                 <td>{{ $post->post }}</td>
                 <td>{{ $post->created_at }}</td>
-                <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img
-                            src="./images/edit.png" alt="編集"></a></td>
+                <td><button class="modal__trigger" href="" post="{{ $post->post }}"
+                        post_id="{{ $post->id }}"><img src="./images/edit.png" alt="編集"></button></td>
                 <td><a class="btn btn-danger" href="/post/{{ $post->id }}/delete"
                         onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="./images/trash.png" alt="削除"></a>
                 </td>
@@ -37,16 +37,38 @@
     </table>
 
     {{-- モーダル --}}
-    <div class="modal js-modal">
-        <div class="modal__bg js-modal-close"></div>
-        <div class="modal__content">
-            <form action="/post/update" method="POST">
-                <textarea name="upPost" class="modal_post"></textarea>
-                <input type="hidden" name="id" class="modal_id" value="">
-                <input type="submit" value="更新">
-                {{ csrf_field() }}
-            </form>
-            <a class="js-modal-close" href="">閉じる</a>
+
+
+
+    <div class="modal">
+        <div class="inner">
+            <!-- モーダル本体 -->
+            <div class="modal__wrapper">
+                <div class="modal__layer"></div>
+                <div class="modal__container">
+                    <div class="modal__inner">
+
+                        <!-- モーダルを閉じるボタン -->
+                        <div class="modal__close"></div>
+                        <!-- / モーダルを閉じるボタン -->
+
+                        <!-- モーダル内のコンテンツ -->
+                        <div class="modal__content">
+                            {{-- <p class="modal__title">モーダル１</p> --}}
+                            <form action="/post/update" method="POST">
+                                <textarea name="upPost" class="modal_post">こんにちは</textarea>
+                                <input type="hidden" name="id" class="modal_id">
+                                {{-- <input type="submit" value="更新"><img src="./images/edit.png" alt="編集"> --}}
+                                <input type="image" class="submit" src="./images/edit.png" alt="更新">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                        <!-- / モーダル内のコンテンツ -->
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

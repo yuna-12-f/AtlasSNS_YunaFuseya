@@ -32,16 +32,16 @@
                             <p>{{ Auth::user()->username }}さん</p>
                             <img src="{{ 'images/' . Auth::user()->images }}">
                         </h3>
+                        <div class="accordion-content">
+                            <ul class="menu">
+                                <li><a class="home" href="/top">ホーム</a></li>
+                                <li><a class="home" href="/profile">プロフィール</a></li>
+                                <li><a class="home" href="/logout">ログアウト</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion-content">
-            <ul class="menu">
-                <li><a class="home" href="/top">ホーム</a></li>
-                <li><a class="profile" href="/profile">プロフィール</a></li>
-                <li><a class="logout" href="/logout">ログアウト</a></li>
-            </ul>
         </div>
     </header>
 
