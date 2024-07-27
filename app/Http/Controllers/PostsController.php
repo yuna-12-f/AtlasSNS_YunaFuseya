@@ -28,6 +28,14 @@ class PostsController extends Controller
         return back();
     }
 
+    public function postUpdate(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        Post::where('id', $id)->update(['post' => $up_post]);
+        return redirect('/top');
+    }
+
     public function delete($id)
     {
         Post::where('id', $id)->delete();

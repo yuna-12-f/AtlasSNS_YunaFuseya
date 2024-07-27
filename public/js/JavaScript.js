@@ -1,6 +1,6 @@
 $(function () {
     $(".js-accordion-title").on("click", function () {
-        $(this).next().slideToggle(300);
+        $(this).closest('#head').next('.accordion-content').slideToggle(300);
         $(this).toggleClass("open", 300);
     });
 });
