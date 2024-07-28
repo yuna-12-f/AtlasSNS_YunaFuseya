@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,8 +12,21 @@ class PostsController extends Controller
     //
     public function index()
     {
-        $posts = Post::get();
-        return view('posts.index', ['posts' => $posts]);
+        //$posts = Post::get();
+        //return view('posts.index', ['posts' => $posts]);
+
+        // 自分の投稿
+        $user = Auth::user();
+        $userId = $user->id;
+
+        // 自分とフォローしているユーザーのIDを取得
+        $followingIds = $user->followed()->pluck('followed_id')->toArray();
+        $userIds = array_merge([$userId], $followingIds);
+
+        // 投稿を取得（新しい順）
+        $posts = Post::whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
+
+        return view('posts.index', compact('posts'));
     }
 
     public function newPostCreate(Request $request)
