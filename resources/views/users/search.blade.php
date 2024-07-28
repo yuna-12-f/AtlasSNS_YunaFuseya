@@ -23,20 +23,21 @@
                         <td><img src=" {{ 'images/' . $user->images }}" alt="ユーザーアイコン"></td>
 
                         <td>
-                            <!-- フォローボタン -->
-                            <form action="/follow" method="POST">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                <button type="submit" class="btn btn-primary">フォローする</button>
-                            </form>
-                        </td>
-                        <td>
-                            <!-- フォローボタン -->
-                            <form action="/unfollow" method="POST">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                <button type="submit" class="btn btn-primary">フォロー解除する</button>
-                            </form>
+                            @if (Auth::user()->isFollowing($user->id))
+                                <!-- フォローボタン -->
+                                <form action="/unfollow" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <button type="submit" class="btn btn-primary">フォロー解除する</button>
+                                </form>
+                            @else
+                                <!-- フォローボタン -->
+                                <form action="/follow" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <button type="submit" class="btn btn-primary">フォローする</button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endif
