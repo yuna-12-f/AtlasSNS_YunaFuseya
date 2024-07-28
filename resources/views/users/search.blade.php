@@ -21,21 +21,26 @@
                     <tr>
                         <td>{{ $user->username }}</td>
                         <td><img src=" {{ 'images/' . $user->images }}" alt="ユーザーアイコン"></td>
+
+                        <td>
+                            <!-- フォローボタン -->
+                            <form action="/follow" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                <button type="submit" class="btn btn-primary">フォローする</button>
+                            </form>
+                        </td>
+                        <td>
+                            <!-- フォローボタン -->
+                            <form action="/unfollow" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                <button type="submit" class="btn btn-primary">フォロー解除する</button>
+                            </form>
+                        </td>
                     </tr>
                 @endif
             @endforeach
         </table>
     </div>
-
-    <!-- フォローボタン -->
-    <form action="/follow" method="POST">
-        @csrf
-        <button type="submit">フォローする</button>
-    </form>
-
-    <!-- フォロー解除ボタン -->
-    <form action="/unfollow" method="POST">
-        @csrf
-        <button type="submit">フォロー解除する</button>
-    </form>
 @endsection

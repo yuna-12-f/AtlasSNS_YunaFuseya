@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowsController extends Controller
 {
-    protected $fillable = [
-        'following_id',
-        'followed_id',
-    ];
+
 
     public function followList()
     {
@@ -23,24 +20,41 @@ class FollowsController extends Controller
         return view('follows.followerList');
     }
 
-    public function follow(Request $request,)
+    public function follow(Request $request)
     {
-        $followerId = Auth::id();
+        //$followingId = Auth::id();
         $userId = $request->input('user_id');
 
-        $follow = Follow::where('following_id', $followerId)
-            ->where('followed_id', $userId)
-            ->first();
+        //フォローしているかチェックする
+        // $follow = Follow::where('following_id', $followingId)
+        //     ->where('followed_id', $userId)
+        //     ->first();
 
-        if ($follow) {
-            $follow->delete();
-        } else {
-            Follow::create([
-                'following_id' => $followerId,
-                'followed_id' => $userId,
-            ]);
+        $follow = Auth::user()->isfollowing($userId);
+        //dd($follow);
+
+        if (!$follow) {
+            // Follow::create([
+            //     'following_id' => $followingId,
+            //     'followed_id' => $userId,
+            // ]);
+            Auth::user()->follow($userId);
         }
 
-        return redirect('/search');
+        return redirect()->back();
+    }
+
+    public function unfollow(Request $request)
+    {
+        $userId = $request->input('user_id');
+
+        $follow = Auth::user()->isfollowed($userId);
+        //dd($follow);
+
+        if ($follow) {
+            Auth::user()->unfollow($userId);
+        }
+
+        return redirect()->back();
     }
 }
