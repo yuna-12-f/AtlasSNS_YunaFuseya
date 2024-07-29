@@ -21,6 +21,20 @@ class UsersController extends Controller
         return view('users.profile');
     }
 
+    public function otherprofile()
+    {
+        return view('users.otherprofile');
+    }
+
+    public function show($id)
+    {
+        //特定のユーザーをデータベースから取得
+        $user = User::findOrFail($id);
+
+        //ユーザー情報をviewに渡す。
+        return view('profile.show', compact('user'));
+    }
+
     public function updateProfile(Request $request)
     {
 

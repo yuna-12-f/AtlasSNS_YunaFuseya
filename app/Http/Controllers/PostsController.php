@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +24,10 @@ class PostsController extends Controller
 
         // 投稿を取得（新しい順）
         $posts = Post::whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
+
+        // フォロー数とフォロワー数を取得
+        //$followCount = $user->followed()->count();
+        //$followerCount = $user->followings()->count();
 
         return view('posts.index', compact('posts'));
     }

@@ -46,8 +46,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/search', 'UsersController@search');
 
-    Route::get('/follow-list', 'PostsController@index');
-    Route::get('/follower-list', 'PostsController@index');
+    //フォローリスト、フォロワーリストにユーザーアイコン、投稿表示
+    Route::get('/follow-list', 'FollowsController@followList');
+    Route::get('/follower-list', 'FollowsController@followerList');
+
+    //フォローリスト、フォロワーリストのアイコンを押したらその他のユーザ-のプロフィール画面に飛ぶ。
+    Route::get('/otherprofile/{id}', 'UsersController@otherprofile');
+
+
+    Route::get('users/{id}/profile', 'UsersController@profile');
+    Route::get('users/{id}/profile', 'UsersController@show');
 
     //新規投稿作成
     Route::post('/newpostsend', 'PostsController@newPostCreate');
