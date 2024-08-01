@@ -51,11 +51,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/follower-list', 'FollowsController@followerList');
 
     //フォローリスト、フォロワーリストのアイコンを押したらその他のユーザ-のプロフィール画面に飛ぶ。
-    Route::get('/otherprofile/{id}', 'UsersController@otherprofile');
+    Route::get('/otherprofile/{id}', 'UsersController@otherProfileUpdate');
 
 
-    Route::get('users/{id}/profile', 'UsersController@profile');
-    Route::get('users/{id}/profile', 'UsersController@show');
+    //Route::get('users/{id}/profile', 'UsersController@profile');
+
+    //Route::get('/otherprofile/update', 'UsersController@otherProfileUpdate');
 
     //新規投稿作成
     Route::post('/newpostsend', 'PostsController@newPostCreate');

@@ -24,13 +24,13 @@
 <body>
     <header>
         <div id = "head">
-            <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+            <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}"></a></h1>
             <div class="accordion">
                 <div class="accordion-container">
                     <div class="accordion-item">
                         <h3 class="accordion-title js-accordion-title">
                             <p>{{ Auth::user()->username }}さん</p>
-                            <img src="{{ 'images/' . Auth::user()->images }}">
+                            <img src="{{ asset('images/' . Auth::user()->images) }}">
                         </h3>
                         <div class="accordion-content">
                             <ul class="menu">
@@ -70,7 +70,7 @@
     <footer>
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/JavaScript.js"></script>
+    <script src="{{ asset('js/JavaScript.js') }}"></script>
 </body>
 
 </html>

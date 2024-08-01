@@ -24,7 +24,7 @@
 
                         <td>
                             @if (Auth::user()->isFollowing($user->id))
-                                <!-- フォローボタン -->
+                                <!-- アンフォローボタン -->
                                 <form action="/unfollow" method="POST">
                                     @csrf
                                     <input type="hidden" name="user_id" value="{{ $user->id }}">

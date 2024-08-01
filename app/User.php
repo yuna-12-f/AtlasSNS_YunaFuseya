@@ -76,6 +76,6 @@ class User extends Authenticatable
     //フォローを解除する
     public function unfollow($userId)
     {
-        return $this->followings()->detach($userId);
+        return $this->followed()->detach($userId);
     }
 }

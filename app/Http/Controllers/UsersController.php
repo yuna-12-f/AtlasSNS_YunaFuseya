@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 use Illuminate\Support\Facades\Hash;
+//use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -26,13 +30,17 @@ class UsersController extends Controller
         return view('users.otherprofile');
     }
 
-    public function show($id)
+    public function otherProfileUpdate($id)
     {
-        //特定のユーザーをデータベースから取得
+        //dd($id);
+        //$user = Auth::user();
+        //$other_ids = $user->followed()->pluck('followed_id');
         $user = User::findOrFail($id);
+        //dd($user);
+        $posts = Post::where('user_id', $id)->get();
 
         //ユーザー情報をviewに渡す。
-        return view('profile.show', compact('user'));
+        return view('users.otherprofile', compact('user', 'posts'));
     }
 
     public function updateProfile(Request $request)
@@ -43,7 +51,7 @@ class UsersController extends Controller
             'mail' => 'required|email|min:5|max:40|unique:users,mail',
             'password' => 'required|alpha-num|min:8|max:20',
             'password_confirmation' => 'required|alpha-num|min:8|max:20|same:password',
-            'bio' => 'string|max:150',
+            'bio' => 'nullable|string|max:150',
             'images' => 'file|mimes:jpg,jpeg,png'
         ]);
 
@@ -53,6 +61,7 @@ class UsersController extends Controller
         $password = $request->input('password');
         $bio = $request->input('bio');
         $images = $request->file('images');
+
 
         User::where('id', $id)->update([
             'username' => $username,

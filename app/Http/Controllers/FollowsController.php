@@ -53,7 +53,7 @@ class FollowsController extends Controller
         //     ->where('followed_id', $userId)
         //     ->first();
 
-        $follow = Auth::user()->isfollowing($userId);
+        $follow = Auth::user()->isfollowing($userId); //フォローしているかどうかを確認。
         //dd($follow);
 
         if (!$follow) {
@@ -70,11 +70,10 @@ class FollowsController extends Controller
     public function unfollow(Request $request)
     {
         $userId = $request->input('user_id');
-
-        $follow = Auth::user()->isfollowed($userId);
-        //dd($follow);
+        $follow = Auth::user()->isfollowing($userId); //フォローしているかどうかを確認。
 
         if ($follow) {
+            //dd($follow);
             Auth::user()->unfollow($userId);
         }
 
