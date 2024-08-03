@@ -61,18 +61,37 @@ class UsersController extends Controller
         $password = $request->input('password');
         $bio = $request->input('bio');
         $images = $request->file('images');
+        //dd($images);
 
+
+
+        if ($images) {
+            // 画像ファイル名を日時に変更
+            $imageName = now()->format('YmdHis') . '.' . $images->getClientOriginalExtension();
+            // 画像をstorage/app/public/user-imagesに保存
+            $images->storeAs('public/user-images', $imageName);
+            // 画像パスを更新
+            //$username->images = $imageName;
+        }
 
         User::where('id', $id)->update([
             'username' => $username,
             'mail' => $mail,
             'password' => Hash::make($request->password), //ハッシュ化
             'bio' => $bio,
-            'images' => $images
+            'images' => $imageName
         ]);
 
         return redirect('/top');
     }
+
+
+    // public function store(Request $request)
+    // {
+    //     $document = $request->document;
+    //     // 画像を"storage/app/public"に保存
+    //     $document->store('public');
+    // }
 
     public function search(Request $request)
     {

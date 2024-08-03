@@ -20,7 +20,7 @@
                 @if ($user->id !== Auth::user()->id)
                     <tr>
                         <td>{{ $user->username }}</td>
-                        <td><img src=" {{ 'images/' . $user->images }}" alt="ユーザーアイコン"></td>
+                        <td><img src=" {{ asset('storage/user-images/' . $user->images) }}" alt="ユーザーアイコン"></td>
 
                         <td>
                             @if (Auth::user()->isFollowing($user->id))

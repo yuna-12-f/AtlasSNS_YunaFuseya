@@ -11,7 +11,7 @@
             {!! Form::open(['url' => '/profile/update', 'enctype' => 'multipart/form-data']) !!}
             @csrf
             {{ Form::hidden('id', Auth::user()->id) }}
-            <img class="update-icon" src="{{ 'images/' . Auth::user()->images }}">
+            <img class="update-icon" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
             <div class="update-form">
                 <div class="update-block">
                     <label for="name">ユーザー名</label>

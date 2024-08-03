@@ -30,7 +30,7 @@
                     <div class="accordion-item">
                         <h3 class="accordion-title js-accordion-title">
                             <p>{{ Auth::user()->username }}さん</p>
-                            <img src="{{ asset('images/' . Auth::user()->images) }}">
+                            <img src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
                         </h3>
                         <div class="accordion-content">
                             <ul class="menu">
