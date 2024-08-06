@@ -22,37 +22,47 @@ header {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    min-height: 100vh;
 }
 
-/*indexの投稿ボタン */
-.submitbtn {
-    border: 0px;
+/* 共通 */
+
+/* 写真の基本スタイル */
+.logo {
     width: 50px;
+    /* 写真のサイズを小さく設定 */
     height: 50px;
-    background: url(../images/post.png) no-repeat;
-    background-size: contain;
+    /* 写真のサイズを小さく設定 */
+    border-radius: 50%;
+    /* 丸い形にする */
+    background-color: white;
+    /* 背景色を白にする */
+    object-fit: cover;
+    /* 画像が丸の中に収まるように調整 */
+    /* display: block;
+    margin: 0 auto; */
+    /* 中央揃え */
 }
 
-.submit_text {
-    border: none;
-    width: 80%;
-    height: 150px;
+/* 背景が透明の場合に白に設定 */
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    z-index: -1;
 }
 
-/*search画面 */
-.btn-success {
-    border: 0px;
-    width: 50px;
-    height: 50px;
-    background: url(../images/search.png) no-repeat;
-    background-size: contain;
-}
+/* Login.blade.php */
 
 /*アコーディオンメニュー */
 .accordion {
     margin-left: auto;
     margin-right: 0;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     max-width: 300px;
     position: relative;
     width: 100%;
@@ -62,7 +72,9 @@ header {
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    justify-content: end;
+    margin-left: 15px;
 }
 
 .accordion-content {
@@ -132,6 +144,10 @@ header {
 #head {
     display: flex;
     position: relative;
+    align-items: center;
+    /* margin: 0 10px; */
+    /* タイトル間の余白を設定 */
+
 }
 
 /* .menu {
@@ -155,6 +171,174 @@ header {
     color: #fffffb;
     opacity: 0.8;
 }
+
+/* ログインユーザー名 */
+h1 {
+    width: 100px;
+    /* padding-top: 16px; */
+}
+
+.atlasLogo {
+    width: 100%;
+    padding-left: 20px;
+    /* height: 60px;
+    display: flex;
+    align-items: center; */
+}
+
+/* サイドバーのボタン */
+.button_side,
+.button_side_search {
+    background-color: #186AC9;
+    border-radius: 12px;
+    color: #fff;
+    /* padding: 12px 40px; */
+    display: block;
+    height: 30px;
+    width: 165px;
+    text-align: center;
+    margin: 10px;
+    line-height: 30px;
+}
+
+.button_side_search {
+    margin-left: 55px;
+    margin-top: 30px;
+}
+
+.button_side {
+    margin-left: 95px;
+}
+
+.side_search {
+    margin: 50px 0;
+    border-top: 2px solid #ccc;
+}
+
+.side_username {
+    margin: 15px;
+}
+
+.side_follow {
+    display: flex;
+    margin: 20px;
+}
+
+.side_number_follow {
+    padding-left: 125px;
+}
+
+.side_number_follower {
+    padding-left: 110px;
+}
+
+
+
+/* index.blade.php */
+
+/*indexの投稿ボタン */
+
+/* 新規投稿フォームの下線、ボタンの幅 */
+.new_post {
+    border-bottom: 6px solid #dcdcdc;
+    padding-left: 65px;
+    padding-right: 40px;
+}
+
+/* 投稿のフィード */
+.table {
+    width: 100%;
+}
+
+.newpost_line {
+    /* line-height: 6; */
+    border-bottom: 1px solid #a9a9a9;
+    width: 100%;
+    padding: 20px 0;
+    display: inline-block;
+}
+
+/* .newpost_parts {
+    padding-left: 30px;
+} */
+
+.posts {
+    vertical-align: top;
+    width: 75%;
+    padding-left: 20px;
+}
+
+.post_td {
+    vertical-align: top;
+    position: relative;
+    height: 100px;
+
+}
+
+.post_icon {
+    /* display: inline-flex;
+    position: absolute;
+    bottom: 0; */
+    width: 100%;
+}
+
+.post_icon_container {
+    display: flex;
+}
+
+.post_usericon_container {
+    padding-left: 20px;
+}
+
+.post_username,
+.post_date {
+    padding-bottom: 20px;
+}
+
+
+
+/* 投稿ボタン */
+.submitbtn {
+    border: 0px;
+    width: 50px;
+    height: 50px;
+    background: url(../images/post.png) no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    /* 角を丸くする半径を設定 */
+}
+
+.submit_text {
+    border: none;
+    width: 80%;
+    height: 120px;
+    margin: 20px;
+}
+
+.logo_edit {
+    width: 50px;
+    /* 写真のサイズを小さく設定 */
+    height: 50px;
+    /* 写真のサイズを小さく設定 */
+}
+
+.logo_trash {
+    width: 50px;
+    /* 写真のサイズを小さく設定 */
+    height: 50px;
+    /* 写真のサイズを小さく設定 */
+}
+
+.logo_trash:hover {
+    content: url(../images/trash-h.png);
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+/* .logo_trash::after {
+    background-image: url(/public/images/trash-h.png);
+} */
+
 
 
 /* モーダル  */
@@ -202,9 +386,10 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(calc(100% - 40px), 1000px);
-    height: calc(100% - 40px);
+    /* height: calc(100% - 40px); */
     padding: 20px;
     background: #fff;
+    border-radius: 20px;
 }
 
 .modal__inner {
@@ -250,9 +435,31 @@ header {
 }
 
 /* モーダル内のコンテンツ */
-.modal__content {}
+.modal__content {
+    text-align: center;
+}
 
 .modal__text {
     margin-top: 30px;
     line-height: 2.875;
+}
+
+.modal_post {
+    width: 900px;
+    height: 200px;
+}
+
+
+/* search.blade.php */
+.btn-success {
+    border: 0px;
+    width: 50px;
+    height: 50px;
+    background: url(../images/search.png) no-repeat;
+    background-size: contain;
+}
+
+/* followlist.blade.php */
+.follow_icon {
+    display: flex;
 }

@@ -24,13 +24,13 @@
 <body>
     <header>
         <div id = "head">
-            <h1><a href="/top"><img src="{{ asset('images/atlas.png') }}"></a></h1>
+            <h1><a href="/top"><img class="atlasLogo" src="{{ asset('images/atlas.png') }}"></a></h1>
             <div class="accordion">
                 <div class="accordion-container">
                     <div class="accordion-item">
                         <h3 class="accordion-title js-accordion-title">
                             <p>{{ Auth::user()->username }}さん</p>
-                            <img src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
+                            <img class="logo" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
                         </h3>
                         <div class="accordion-content">
                             <ul class="menu">
@@ -52,19 +52,21 @@
         </div>
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ Auth::user()->username }}さんの</p>
-                <div>
+                <p class="side_username">{{ Auth::user()->username }}さんの</p>
+                <div class="side_follow">
                     <p>フォロー数</p>
-                    <p>{{ Auth::user()->followed->count() }}名</p>
+                    <p class="side_number_follow">{{ Auth::user()->followed->count() }}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
+                <a class="button_side btn" href="/follow-list">フォローリスト</a>
+                <div class="side_follow">
                     <p>フォロワー数</p>
-                    <p>{{ Auth::user()->followings->count() }}名</p>
+                    <p class="side_number_follower">{{ Auth::user()->followings->count() }}名</p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <a class="button_side btn" href="/follower-list">フォロワーリスト</a>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <p class="side_search">
+                <a class="button_side_search btn " href="/search">ユーザー検索</a>
+            </p>
         </div>
     </div>
     <footer>
