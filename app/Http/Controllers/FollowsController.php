@@ -23,7 +23,9 @@ class FollowsController extends Controller
         //ユーザーIDがfollowed_idsと一致したものを取得する。
         //dd($follow_users);
 
-        $follow_posts = Post::whereIn('user_id', $followed_ids)->get();
+        // $follow_posts = Post::whereIn('user_id', $followed_ids)->get();
+        // 投稿を新しい順に取得
+        $follow_posts = Post::whereIn('user_id', $followed_ids)->orderBy('created_at', 'desc')->get();
 
         return view('follows.followList', compact('follow_users', 'follow_posts'));
     }
@@ -38,7 +40,10 @@ class FollowsController extends Controller
 
         $follow_users = User::whereIn('id', $following_ids)->get();
 
-        $follow_posts = Post::whereIn('user_id', $following_ids)->get();
+        //$follow_posts = Post::whereIn('user_id', $following_ids)->get();
+        // 投稿を新しい順に取得
+        $follow_posts = Post::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->get();
+
 
         return view('follows.followerList', compact('follow_users', 'follow_posts'));
     }
