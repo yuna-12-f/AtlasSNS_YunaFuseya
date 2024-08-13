@@ -151,5 +151,22 @@ body {
     margin: 0 auto;
     width: 240px;
     margin-top: 20px;
-    padding: 20px 25px 30px;
+    padding: 20px 25px;
+}
+
+.added_btn {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.added_button {
+    background-color: #dc143c;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    width: 140px;
+    line-height: 30px;
+    border: 0px;
+    display: inline-block;
+    text-align: center;
 }

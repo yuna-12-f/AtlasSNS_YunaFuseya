@@ -15,8 +15,10 @@
                 <p>早速ログインをしてみましょう。</p>
             </div>
 
-            {{-- <p class="register_btn"><a href="/login">ログイン画面へ</a></p> --}}
-            <div class="added_btn">{{ Form::submit('ログイン画面へ', ['class' => 'btn-primary_unfollow']) }}</div>
+            <div class="added_btn">
+                <a class="added_button" href="/login">ログイン画面へ</a>
+            </div>
+            {{-- <div class="added_btn">{{ Form::submit('ログイン画面へ', ['class' => 'btn-primary_unfollow']) }}</div> --}}
         </div>
     </div>
 @endsection
