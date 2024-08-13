@@ -2,12 +2,21 @@
 
 @section('content')
     <div id="clear">
-        <p>{{ session('username') }}さん</p>
-        <p>{{ $mail }}</p>
-        <p>ようこそ！AtlasSNSへ！</p>
-        <p>ユーザー登録が完了しました。</p>
-        <p>早速ログインをしてみましょう。</p>
+        <div class="added_border">
 
-        <p class="btn"><a href="/login">ログイン画面へ</a></p>
+            <div class="added_name">
+                <p class="added_user">{{ session('username') }}さん</p>
+                {{-- <p>{{ $mail }}</p> --}}
+                <p>ようこそ！AtlasSNSへ！</p>
+            </div>
+
+            <div class="added_login">
+                <p class="added_user">ユーザー登録が完了しました。</p>
+                <p>早速ログインをしてみましょう。</p>
+            </div>
+
+            {{-- <p class="register_btn"><a href="/login">ログイン画面へ</a></p> --}}
+            <div class="added_btn">{{ Form::submit('ログイン画面へ', ['class' => 'btn-primary_unfollow']) }}</div>
+        </div>
     </div>
 @endsection

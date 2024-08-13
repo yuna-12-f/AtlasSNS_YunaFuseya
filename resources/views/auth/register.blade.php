@@ -6,26 +6,28 @@
     @endforeach
 
     <!-- 適切なURLを入力してください -->
-    {!! Form::open(['url' => '/register']) !!}
+    {!! Form::open(['url' => '/register', 'class' => 'login-form']) !!}
 
-    <h2>新規ユーザー登録</h2>
+    <div class="login_border">
 
+        <h2 class="logout_intro">新規ユーザー登録</h2>
+        <p class="register_label">{{ Form::label('ユーザー名') }}</p>
+        <div>{{ Form::text('username', null, ['class' => 'input']) }}</div>
 
-    {{ Form::label('ユーザー名') }}
-    {{ Form::text('username', null, ['class' => 'input']) }}
+        <p class="register_label">{{ Form::label('メールアドレス') }}</p>
+        <div>{{ Form::text('mail', null, ['class' => 'input']) }}</div>
 
-    {{ Form::label('メールアドレス') }}
-    {{ Form::text('mail', null, ['class' => 'input']) }}
+        <p class="register_label">{{ Form::label('パスワード') }}</p>
+        <div>{{ Form::password('password', ['class' => 'input']) }}</div>
 
-    {{ Form::label('パスワード') }}
-    {{ Form::text('password', null, ['class' => 'input']) }}
+        <p class="register_label">{{ Form::label('パスワード確認') }}</p>
+        <div>{{ Form::password('password_confirmation', ['class' => 'input']) }}</div>
 
-    {{ Form::label('パスワード確認') }}
-    {{ Form::text('password_confirmation', null, ['class' => 'input']) }}
+        <div class="register_btn">{{ Form::submit('新規登録', ['class' => 'btn-primary_unfollow']) }}</div>
 
-    {{ Form::submit('登録') }}
+        <p><a href="/login" class="logout_url">ログイン画面へ戻る</a></p>
 
-    <p><a href="/login">ログイン画面へ戻る</a></p>
+    </div>
 
     {!! Form::close() !!}
 @endsection
