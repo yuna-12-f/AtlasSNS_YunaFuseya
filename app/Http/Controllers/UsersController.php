@@ -37,7 +37,7 @@ class UsersController extends Controller
         //$other_ids = $user->followed()->pluck('followed_id');
         $user = User::findOrFail($id);
         //dd($user);
-        $posts = Post::where('user_id', $id)->get();
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
         //ユーザー情報をviewに渡す。
         return view('users.otherprofile', compact('user', 'posts'));

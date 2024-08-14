@@ -26,7 +26,7 @@
                 @foreach ($follow_posts as $following_post)
                     <tr class="followpost_line">
                         <td class="follow_usericon_container">
-                            <a href="/otherprofile/{{ $following->id }}">
+                            <a href="/otherprofile/{{ $following_post->user->id }}">
                                 <img class="logo"
                                     src=" {{ asset('storage/user-images/' . $following_post->user->images) }}"
                                     alt="ユーザーアイコン">

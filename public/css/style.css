@@ -85,7 +85,6 @@ header {
     z-index: 10;
     /* padding: 10px 20px; */
     background-color: #fffffb;
-
 }
 
 /* .accordion-content::after {
@@ -113,8 +112,6 @@ header {
     align-items: center;
 }
 
-
-
 .accordion-title p {
     position: relative;
     padding-right: 50px;
@@ -134,9 +131,12 @@ header {
     width: 8px;
 }
 
+/* .accordion-title .open p::after {
+    top: 45%;
+    transform: rotate(-45deg);
+} */
 
-
-.accordion-title.open::after {
+.js-accordion-title.open p::after {
     top: 45%;
     transform: rotate(-45deg);
 }
@@ -147,7 +147,6 @@ header {
     align-items: center;
     /* margin: 0 10px; */
     /* タイトル間の余白を設定 */
-
 }
 
 /* .menu {
@@ -232,8 +231,6 @@ h1 {
     padding-left: 110px;
 }
 
-
-
 /* index.blade.php */
 
 /*indexの投稿ボタン */
@@ -272,7 +269,6 @@ h1 {
     vertical-align: top;
     position: relative;
     height: 100px;
-
 }
 
 .post_icon {
@@ -294,8 +290,6 @@ h1 {
 .post_date {
     padding-bottom: 20px;
 }
-
-
 
 /* 投稿ボタン */
 .submitbtn {
@@ -338,8 +332,6 @@ h1 {
 /* .logo_trash::after {
     background-image: url(/public/images/trash-h.png);
 } */
-
-
 
 /* モーダル  */
 .modal {
@@ -449,19 +441,25 @@ h1 {
     height: 200px;
 }
 
-
-
 /* followlist.blade.php */
 .follow_icon {
     display: flex;
     margin: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
+
+/* .follow_item { */
+/* width: calc(10% - 10px); */
+/* 10%の幅に設定し、余白を考慮 */
+/* box-sizing: border-box; */
+/* } */
 
 .follow_container {
     display: flex;
     border-bottom: 6px solid #dcdcdc;
     padding-left: 65px;
-    padding-right: 40px;
+    padding-right: 200px;
     padding-bottom: 33px;
     padding-top: 15px;
 }
@@ -501,9 +499,8 @@ h1 {
 .follow_list {
     margin-top: 45px;
     font-size: 20px;
+    width: 160px;
 }
-
-
 
 /* search.blade.php */
 .btn-success {
@@ -565,7 +562,6 @@ h1 {
     vertical-align: middle;
 }
 
-
 .btn-primary_unfollow {
     background-color: #ff0000;
     border-radius: 10px;
@@ -597,7 +593,6 @@ h1 {
     margin-left: 150px;
     font-size: 29px;
 }
-
 
 /* profile.blade.php */
 .profile_form_container {
@@ -647,14 +642,100 @@ h1 {
     background-color: #dc143c;
 }
 
-.profile_input {
+.profile_input,
+.profile_input_image {
     font-size: 25px;
 }
 
+.profile_input_image {
+    width: 160px;
+    font-size: 20px;
+}
 
-/* login.blade.php */
-/* .login_form {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    padding: 20px;
-    border-radius: 8px;
-} */
+
+/* otherprofile.blade.php */
+.otherlist_container {
+    border-bottom: 6px solid #dcdcdc;
+}
+
+.other_name {
+    display: flex;
+}
+
+.other_bio {
+    display: flex;
+}
+
+.other_item {
+    display: flex;
+    padding: 42px 65px;
+}
+
+.other_user {
+    margin-bottom: 30px;
+    margin-right: 40px;
+    font-size: 25px;
+}
+
+.other_intro {
+    font-size: 25px;
+    margin-right: 65px;
+}
+
+.other_form {
+    margin-left: 30px;
+    width: 80%;
+}
+
+.other {
+    font-size: 25px;
+}
+
+.btn-primary_follow_other {
+    background-color: #00bfff;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    height: 30px;
+    width: 165px;
+    text-align: center;
+    /* margin: 10px; */
+    line-height: 30px;
+    border: 0px;
+    margin-top: 50px;
+}
+
+.btn-primary_unfollow_other {
+    background-color: #ff0000;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    height: 30px;
+    width: 165px;
+    text-align: center;
+    /* margin: 10px; */
+    line-height: 30px;
+    border: 0px;
+    margin-top: 50px;
+}
+
+.other-items {
+    border-bottom: 1px solid #a9a9a9;
+    width: 100%;
+    padding: 20px 0;
+    /* display: inline-block; */
+    display: flex;
+}
+
+.other_posts {
+    padding-left: 20px;
+    width: 70%;
+}
+
+.other_icon {
+    margin-left: 30px;
+}
+
+.other_username {
+    padding-bottom: 20px;
+}

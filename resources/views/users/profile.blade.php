@@ -40,7 +40,7 @@
             </div>
             <div class="update_block">
                 <label for="name" class="profile_image">アイコン画像</label>
-                <input class="profile_input" type="file" name="images">
+                <input class="profile_input_image" type="file" name="images" value="">
             </div>
             <input type="submit" class="btn-primary_unfollow profile_btn" value="更新">
             {{ Form::token() }}
