@@ -21,8 +21,19 @@
             @foreach ($users as $user)
                 @if ($user->id !== Auth::user()->id)
                     <tr class="search_line">
-                        <td class="search_usericon_container"><img class="search_icon"
-                                src=" {{ asset('storage/user-images/' . $user->images) }}" alt="ユーザーアイコン"></td>
+                        <td class="search_usericon_container">
+
+                            @if ($user->images == 'icon1.png')
+                                {{-- icon1だったら --}}
+                                {{-- icon1だった時の文 --}}
+                                <img class="search_icon" src=" {{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
+                            @else
+                                {{-- icon1以外だった場合 --}}
+                                <img class="search_icon" src=" {{ asset('storage/user-images/' . $user->images) }}"
+                                    alt="ユーザーアイコン">
+                            @endif
+
+                        </td>
                         <td class="search_username">
                             <p class="search_username_line">{{ $user->username }}</p>
                         </td>

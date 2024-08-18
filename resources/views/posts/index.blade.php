@@ -6,13 +6,21 @@
             <div class="content2">
                 <form class="new_post" action="/newpostsend" method="post">
                     @csrf
-                    <img class="logo" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
+                    @if (Auth::user()->images == 'icon1.png')
+                        {{-- icon1だったら --}}
+                        {{-- icon1だった時の文 --}}
+                        <img class="logo" src="{{ asset('images/' . Auth::user()->images) }}">
+                    @else
+                        {{-- icon1以外だった場合 --}}
+                        <img class="logo" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
+                    @endif
+
                     <input type="text" name="post" class="submit_text" placeholder="投稿内容を入力してください。">
 
                     <input type="submit" value="" class="submitbtn">
 
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="error_list_post">{{ $error }}</li>
                     @endforeach
                 </form>
 
@@ -24,8 +32,15 @@
     <table class="table table-hover">
         @foreach ($posts as $post)
             <tr class="newpost_line">
-                <td class="post_usericon_container"><img class="logo"
-                        src=" {{ asset('storage/user-images/' . $post->user->images) }}" alt="ユーザーアイコン">
+                <td class="post_usericon_container">
+
+                    @if ($post->user->images == 'icon1.png')
+                        <img class="logo" src=" {{ asset('images/' . $post->user->images) }}" alt="ユーザーアイコン">
+                    @else
+                        {{-- icon1以外だった場合 --}}
+                        <img class="logo" src=" {{ asset('storage/user-images/' . $post->user->images) }}" alt="ユーザーアイコン">
+                    @endif
+
                 </td>
                 <td class="posts">
                     <p class="post_username">{{ $post->user->username }}</p>
@@ -76,6 +91,7 @@
                                 <textarea name="upPost" class="modal_post"></textarea>
                                 <input type="hidden" name="id" class="modal_id">
                                 {{-- <input type="submit" value="更新"><img src="./images/edit.png" alt="編集"> --}}
+                                <div class="modal_error" style="display: none; color: red;"></div>
                                 <input class="logo_edit" type="image" class="submit" src="./images/edit.png"
                                     alt="更新">
                                 {{ csrf_field() }}

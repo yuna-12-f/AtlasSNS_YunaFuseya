@@ -2,16 +2,24 @@
 
 html {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    /* height: 100%; */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.logout_container {
     background: linear-gradient(to bottom, #1e90ff, rgba(24, 108, 201, 0.6) 60%, #ffff00);
+    min-height: 100vh;
 }
 
 .logout_body {
     text-align: center;
-    margin-top: 100px;
+    padding-top: 100px;
     margin-bottom: 10px;
 }
 
@@ -29,7 +37,7 @@ body {
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
-    width: 230px;
+    width: 255px;
     /* padding-top: 20px; */
     margin-top: 20px;
     padding: 20px 25px 30px;
@@ -170,4 +178,12 @@ body {
     border: 0px;
     display: inline-block;
     text-align: center;
+}
+
+/* エラーメッセージ */
+.error_list {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 5px;
+    list-style-type: none;
 }

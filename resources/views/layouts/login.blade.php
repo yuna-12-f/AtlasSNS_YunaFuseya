@@ -30,7 +30,14 @@
                     <div class="accordion-item">
                         <h3 class="accordion-title js-accordion-title">
                             <p>{{ Auth::user()->username }}さん</p>
-                            <img class="logo" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
+
+                            @if (Auth::user()->images == 'icon1.png')
+                                <img class="logo" src=" {{ asset('images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+                            @else
+                                {{-- icon1以外だった場合 --}}
+                                <img class="logo" src="{{ asset('storage/user-images/' . Auth::user()->images) }}">
+                            @endif
+
                         </h3>
                         <div class="accordion-content">
                             <ul class="menu">

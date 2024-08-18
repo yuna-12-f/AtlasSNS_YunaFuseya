@@ -34,6 +34,21 @@ $(trigger).click(function () {
     $('html, body').css('overflow', 'hidden');
 });
 
+// モーダルのフォームが送信されるときのバリデーションチェック
+$('.modal_form').on('submit', function (event) {
+    var post = $('.modal_post').val();
+
+    // 投稿内容が空の場合、バリデーションエラーメッセージを表示して送信を防ぐ
+    if (!post) {
+        event.preventDefault();
+        $('.modal_error').text('投稿内容を入力してください。');
+        $('.modal_error').show();
+    } else {
+        // エラーがなければ送信を許可
+        $('.modal_error').hide();
+    }
+});
+
 // 『背景』と『モーダルを閉じるボタン』をクリックしたら、『モーダル本体』を非表示
 $(layer).add(close).click(function () {
     $(wrapper).fadeOut(400);

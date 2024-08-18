@@ -739,3 +739,21 @@ h1 {
 .other_username {
     padding-bottom: 20px;
 }
+
+
+/* エラーメッセージ */
+.error_list {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 5px;
+    list-style-type: none;
+    margin-left: 310px;
+}
+
+.error_list_post {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 5px;
+    list-style-type: none;
+    margin-left: 80px;
+}

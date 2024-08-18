@@ -72,6 +72,8 @@ class UsersController extends Controller
             $images->storeAs('public/user-images', $imageName);
             // 画像パスを更新
             //$username->images = $imageName;
+        } else {
+            $username->images = 'default.png'; // デフォルト画像を設定
         }
 
         User::where('id', $id)->update([

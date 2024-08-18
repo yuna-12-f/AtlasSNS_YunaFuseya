@@ -9,7 +9,17 @@
                 <div class="other_item">
                     <tr>
                         <td>
-                            <img class="logo" src=" {{ asset('storage/user-images/' . $user->images) }}" alt="ユーザーアイコン">
+
+                            @if ($user->images == 'icon1.png')
+                                {{-- icon1だったら --}}
+                                {{-- icon1だった時の文 --}}
+                                <img class="logo" src=" {{ asset('images/' . $user->images) }}" alt="ユーザーアイコン">
+                            @else
+                                {{-- icon1以外だった場合 --}}
+                                <img class="logo" src=" {{ asset('storage/user-images/' . $user->images) }}" alt="ユーザーアイコン">
+                            @endif
+
+
                         </td>
                         <td>
                             <div class="other_form">
@@ -50,8 +60,19 @@
                 @foreach ($posts as $otherpost)
                     <div class="other-items">
                         <p>
-                            <img class="logo other_icon"
-                                src=" {{ asset('storage/user-images/' . $otherpost->user->images) }}" alt="ユーザーアイコン">
+
+                            @if ($otherpost->user->images == 'icon1.png')
+                                {{-- icon1だったら --}}
+                                {{-- icon1だった時の文 --}}
+                                <img class="logo other_icon" src=" {{ asset('images/' . $otherpost->user->images) }}"
+                                    alt="ユーザーアイコン">
+                            @else
+                                {{-- icon1以外だった場合 --}}
+                                <img class="logo other_icon"
+                                    src=" {{ asset('storage/user-images/' . $otherpost->user->images) }}" alt="ユーザーアイコン">
+                            @endif
+
+
                         </p>
                         <div class="other_posts">
                             <p class="other_username">{{ $otherpost->user->username }}</p>

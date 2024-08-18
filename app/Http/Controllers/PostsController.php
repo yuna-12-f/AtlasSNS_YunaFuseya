@@ -47,6 +47,10 @@ class PostsController extends Controller
 
     public function postUpdate(Request $request)
     {
+        $request->validate([
+            'upPost' => 'required|string|max:150',
+        ]);
+
         $id = $request->input('id');
         $up_post = $request->input('upPost');
         Post::where('id', $id)->update(['post' => $up_post]);

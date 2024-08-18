@@ -96,7 +96,7 @@ return [
     'password'             => ':attributeが間違っています',
     'present'              => ':attributeが存在している必要があります。',
     'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    'required'             => ':attributeは、必ず指定してください。',
+    'required'             => ':attributeは、必ず入力してください。',
     'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
     'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
     'required_with'        => ':valuesが指定されている場合、:attributeも指定してください。',
@@ -135,7 +135,13 @@ return [
         'mail' => 'メール',
         'post' => '投稿',
         'password' => 'パスワード',
+        'password_confirmation' => 'パスワードの確認',
+        'upPost' => '投稿'
     ],
+
+    // 'required' => [
+    //     'password confirmation' => 'パスワードの確認',
+    // ],
 
 
     'custom' => [

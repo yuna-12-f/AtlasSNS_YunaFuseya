@@ -22,15 +22,17 @@
 </head>
 
 <body>
-    <header>
-        <h1 class="logout_body"><img class="logout_logo" src="images/atlas.png"></h1>
-        <p class="logout_social">Social Network Service</p>
-    </header>
-    <div id="container">
-        @yield('content')
+    <div class="logout_container">
+        <header>
+            <h1 class="logout_body"><img class="logout_logo" src="images/atlas.png"></h1>
+            <p class="logout_social">Social Network Service</p>
+        </header>
+        <div id="container">
+            @yield('content')
+        </div>
+        <script src="JavaScriptファイルのURL"></script>
+        <script src="JavaScriptファイルのURL"></script>
     </div>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
 </body>
 
 </html>
