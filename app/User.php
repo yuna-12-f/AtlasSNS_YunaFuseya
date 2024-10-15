@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'mail', 'password',
+        'username',
+        'mail',
+        'password',
     ];
 
     /**
@@ -24,7 +26,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     public function posts()
@@ -61,7 +64,7 @@ class User extends Authenticatable
         return $this->followed()->where('followed_id', $userId)->exists();
     }
 
-    // ユーザーをフォローしているかどうかを確認する
+    // ユーザーにフォローされているかどうかを確認する
     public function isFollowed($userId)
     {
         return $this->followings()->where('following_id', $userId)->exists();
